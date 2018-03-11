@@ -20,14 +20,29 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        let sphere =  SCNSphere(radius: 0.2)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIImage(named: "2k_earth_daymap.jpg")
+        sphere.materials = [material]
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        // creating a node object
         
-        // Set the scene to the view
-        sceneView.scene = scene
+        let node = SCNNode()
+        node.position = SCNVector3(x: 0 , y: 0.1 , z: -0.5)
+        
+        // placing our moon to the postion / node we creat
+        
+        node.geometry = sphere
+        
+        // adding moon to the scence
+        
+        sceneView.scene.rootNode.addChildNode(node)
+        
+        // project light on the moon and make it look like a 3d object
+        
+        sceneView.autoenablesDefaultLighting = true
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
