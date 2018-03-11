@@ -22,7 +22,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let sphere =  SCNSphere(radius: 0.2)
         let material = SCNMaterial()
-        material.diffuse.contents = UIImage(named: "2k_earth_daymap.jpg")
+        material.diffuse.contents = UIImage(named: "art.scnassets/2k_earth_daymap.jpg")
         sphere.materials = [material]
         
         // creating a node object
